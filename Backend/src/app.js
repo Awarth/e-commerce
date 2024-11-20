@@ -23,6 +23,9 @@ import productRouter from "./routers/product.routes.js";
 import cartRouter from "./routers/cart.routes.js";
 import orderRouter from "./routers/order.routes.js";
 
+app.get('/',(req,res)=>{
+  res.send('E commerce api')
+})
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/product", productRouter);
 app.use("/api/v1/cart", cartRouter);
