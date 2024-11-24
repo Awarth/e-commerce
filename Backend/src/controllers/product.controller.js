@@ -212,6 +212,8 @@ const removeAProduct = asyncHandler(async (req, res) => {
 
   await deleteFromCloudinary(product.image);
 
+  await Product.findByIdAndDelete(product._id);
+
   return res
     .status(200)
     .json(new ApiResponse(200, null, "Product removed successfully"));

@@ -7,7 +7,6 @@
   scroll-behavior: smooth;
 }
 
-/* From Uiverse.io by AbanoubMagdy1 */
 .loader {
   --dim: 3rem;
   width: var(--dim);
