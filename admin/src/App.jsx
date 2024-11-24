@@ -10,7 +10,7 @@ import EditProduct from "./pages/EditProduct";
 import AddProduct from "./pages/AddProduct";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import Home from "./pages/Home";
 
 function App() {
   return (
@@ -20,6 +20,7 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/sign-up" element={<SignUpPage />} />
+          <Route path="/" element={<Home />} />
           <Route element={<ProtectedLayout />}>
             <Route path="/products" element={<Products />} />
             <Route path="/orders" element={<Orders />} />
