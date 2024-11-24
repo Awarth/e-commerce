@@ -36,7 +36,6 @@ const LoginModal = ({ closeModal }) => {
         })
       );
       closeModal();
-      // navigate("/");
     } catch (err) {
       console.log("Error while login", err);
       setError("Invalid email or password.");
@@ -47,6 +46,33 @@ const LoginModal = ({ closeModal }) => {
 
   const handleSignUpRedirect = () => {
     navigate("/sign-up");
+  };
+
+  const handleDemoLogin = () => {
+    const demoLogin = async () => {
+      try {
+        setLoading(true);
+        const res = await api.post("/user/login", {
+          email: "adesh123@gmail.com",
+          password: "Adesh@123",
+        });
+        setError("Failed to login try again");
+        dispatch(
+          login({
+            user: res.data.user,
+            accessToken: res.data.data.accessToken,
+            refreshToken: res.data.data.refreshToken,
+          })
+        );
+        closeModal();
+      } catch (err) {
+        console.log("Error while login", err);
+        setError("Invalid email or password.");
+      } finally {
+        setLoading(false);
+      }
+    };
+    demoLogin();
   };
 
   return (
@@ -106,6 +132,12 @@ const LoginModal = ({ closeModal }) => {
             >
               Login
             </button>
+            <div
+              onClick={handleDemoLogin}
+              className="cursor-pointer flex justify-center items-center w-full mt-1 border px-3 py-2 bg-black text-white rounded text-lg"
+            >
+              Demo Login
+            </div>
           </form>
           <button
             onClick={closeModal}
